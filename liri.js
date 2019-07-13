@@ -48,7 +48,7 @@ var getMeSpotify = function(songName) {
       }
       //creating a sound variable
       var songs = data.tracks.items;
-
+      //for loop for going through songs array of tracks
       for (var i = 0; i < songs.length; i++) {
         console.log(i);
         console.log("artist(s): " + songs[i].artists.map(getArtistNames));
@@ -60,14 +60,14 @@ var getMeSpotify = function(songName) {
     }
   );
 };
-
+//creating a function for using bands in town linked with the artist above
 var getMyBands = function(artist) {
   var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
 
   axios.get(queryURL).then(
     function(response) {
       var jsonData = response.data;
-
+      //taking json data and seeing if the artist comes back with a result
       if (!jsonData.length) {
         console.log("No results found for " + artist);
         return;
